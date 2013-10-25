@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import br.com.reservas.shared.entities.Boleto;
+import br.com.reservas.shared.entities.Cliente;
 import br.com.reservas.shared.entities.Reserva;
 import br.com.reservas.shared.persistence.AbstractPersistence;
 import br.com.reservas.shared.srv1.persistence.ReservasPersistence;
@@ -32,6 +33,12 @@ public class ReservasPersistenceImpl extends AbstractPersistence implements Rese
 	{
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Cliente getDadosCliente(Long id)
+	{
+		return getEntityManager().find(Cliente.class, id);
 	}
 
 }

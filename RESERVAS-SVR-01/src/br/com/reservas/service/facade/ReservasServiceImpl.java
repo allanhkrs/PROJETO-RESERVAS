@@ -2,12 +2,13 @@ package br.com.reservas.service.facade;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
-import br.com.reservas.persistence.facade.ReservasPersistenceImpl;
 import br.com.reservas.shared.entities.Assento;
 import br.com.reservas.shared.entities.Aviao;
 import br.com.reservas.shared.entities.Cidade;
+import br.com.reservas.shared.entities.Cliente;
 import br.com.reservas.shared.srv1.persistence.ReservasPersistence;
 import br.com.reservas.shared.srv1.service.ReservasService;
 
@@ -15,8 +16,9 @@ import br.com.reservas.shared.srv1.service.ReservasService;
 public class ReservasServiceImpl implements ReservasService
 {
 
-	private ReservasPersistence persistence = new ReservasPersistenceImpl();
-
+	@EJB
+	private ReservasPersistence persistence;
+	
 	@Override
 	public boolean verificaAssentoReservado(Assento assento)
 	{
@@ -50,6 +52,12 @@ public class ReservasServiceImpl implements ReservasService
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Cliente recuperarDadosCliente(Long id)
+	{
+		return persistence.getDadosCliente(id);
 	}
 
 }
